@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#"displays numbers 1 to 20"
+
+I=1
+while((I < 21))
+do
+	echo $I
+	case $I in
+	4)
+		echo "bad luck from China"
+		;;
+	9)
+		echo "bad luck from Japan"
+		;;
+	17)
+		echo "bad luck from Italy"
+		;;
+	*)
+		;;
+	esac
+	((I++))
+done

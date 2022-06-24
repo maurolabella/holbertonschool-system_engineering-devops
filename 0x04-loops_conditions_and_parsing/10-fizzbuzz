@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#displays numbers from 1 to 100
+
+I=1
+
+while((I < 101))
+do
+	if((I % 15 == 0))
+	then
+		echo "FizzBuzz"
+	elif((I % 3 == 0))
+	then
+		echo "Fizz"
+	elif((I % 5 == 0))
+	then
+		echo "Buzz"
+	else
+		echo "$I"
+	fi
+	((I++))
+done

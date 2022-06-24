@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+#manages 'manage_my_process' as if an init script
+
+FILE='/var/run/my_process.pid'
+
+function start
+{
+	./manage_my_process & 
+	echo "$!" > $FILE 
+	echo "manage_my_process started"
+	exit
+}
+
+function stop
+{
+	kill "$(cat $FILE)"
+	rm $FILE
+	echo "manage_my_process stopped"
+	exit 0
+}
+
+function restart
+{
+	if [ -e $FILE ]
+		then
+		kill "$(cat $FILE)"
+		rm $FILE
+	fi
+	./manage_my_process &
+	echo "$!" > $FILE
+	echo "manage_my_process restarted"
+	exit 0
+}
+
+if [ "$1" == "start" ]
+	then
+		start
+elif [ "$1" == "stop" ]
+	then
+		stop
+elif [ "$1" == "restart" ]
+	then
+		restart
+else
+		echo "Usage: manage_my_process {start|stop|restart}"
+		exit 1
+fi

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#script displays the current directory
+#in a list format
+
+for i in *
+do 
+	find "$i" | cut -d "-" -f2
+done
+

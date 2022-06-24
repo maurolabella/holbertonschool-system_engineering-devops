@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Indefinitely writes I am alive! to the file 
+#/tmp/my_process
+#In between every I am alive! message, the program 
+#should pause for 2 seconds
+
+MY_LOG='/tmp/my_process'
+
+while ((1 == 1))
+do
+	echo 'I am alive!' >> $MY_LOG
+	sleep 2
+done

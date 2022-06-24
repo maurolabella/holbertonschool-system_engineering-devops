@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#creates script file with shebang and permissions
+
+printf "\nInsert the name of the new file: "
+read -r FILENAME
+touch "./$FILENAME"
+printf "#!/usr/bin/env bash\n" > "./$FILENAME"
+chmod 777 "./$FILENAME"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Script that loops from 1 to 10 and:
+# displays bad luck, good luck, and Best School
+# in the 4th, 8th, the others respectively
+
+I=1
+while((I<11))
+do
+	if((I == 4))
+	then	
+		echo "bad luck"
+	elif((I == 8))
+	then 
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((I++))
+done

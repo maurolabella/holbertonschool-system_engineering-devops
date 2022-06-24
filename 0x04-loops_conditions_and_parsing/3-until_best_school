@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#This script displays Best School 10 times
+
+I=0
+until((I>=10))
+do
+	echo "Best School"
+	((I++))
+done
+
