@@ -1,4 +1,4 @@
-# Using Puppet, create a holberton file in /tmp
+# Using Puppet, create a shcool file in /tmp
 
 file { '/tmp/school':
   ensure  => file,
