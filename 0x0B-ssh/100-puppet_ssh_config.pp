@@ -1,3 +1,5 @@
+# Let's practice using Puppet to make changes to our configuration file
+#from server side > manifest
 file_line { 'Turn off passwd auth':
   ensure => present,
   path   => '/etc/ssh/ssh_config',
