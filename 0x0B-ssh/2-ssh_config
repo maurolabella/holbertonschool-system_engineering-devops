@@ -15,7 +15,7 @@
 
 Include /etc/ssh/ssh_config.d/\*.conf
 
-Host \*
+Host *
 # ForwardAgent no
 # ForwardX11 no
 # ForwardX11Trusted yes
