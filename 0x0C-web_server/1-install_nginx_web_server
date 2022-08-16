@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Nginx installation: remote server
 
-sudo apt update
-sudo apt install nginx
+sudo apt -y update
+sudo apt -y install nginx
 # Firewall port 80
 sudo ufw allow 'Nginx HTTP'
 # Fix permission problems on folder, grant access to ubuntu group Ubuntu 20.04
