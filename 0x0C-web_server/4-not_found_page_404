@@ -18,7 +18,7 @@ sudo service nginx stop
 # Redirection
 sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n' /etc/nginx/sites-available/default
 #404 
-sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
-sudo sed -i '/listen 80 default_server/a error_page 404 /custom_404.html;location = /custom_404.html {root /var/www/html;\n internal;}' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
+sudo sed -i '/server_name _;/a error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
 # Restart
-sudo service nginx restart
+sudo service nginx start
