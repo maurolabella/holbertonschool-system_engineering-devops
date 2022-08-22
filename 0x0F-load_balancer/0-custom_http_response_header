@@ -21,4 +21,4 @@ sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtu
 #NGINX trial
 sudo sed -i "/listen 80 default_server/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/sites-available/default
 sudo sed -i '/listen 80 default_server/a \\t# 404 Page:\n\terror_page 404 /custom_404.html; location = /custom_404.html {\n\troot /usr/share/nginx/html;\n\tinternal;\n\t}\n' /etc/nginx/sites-available/default
-service nginx start
+sudo service nginx start
