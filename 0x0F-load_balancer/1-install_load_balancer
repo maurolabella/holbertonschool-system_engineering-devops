@@ -14,8 +14,8 @@ listen http-in
         bind *:80
         mode http
         balance roundrobin
-        server 1201-web-01 52.200.131.229:80 check
-        server 1201-web-02 54.146.160.217:80 check
+        server 4434-web-01 54.162.164.215:80 check
+        server 4434-web-02 54.221.24.84:80 check
 EOF
 # Create Files
 service haproxy restart
