@@ -4,19 +4,20 @@
 
 sudo apt update -y
 sudo apt install -y nginx
-sudo ufw allow 'Nginx HTTP'
-# Permissions
-sudo chgrp -R ubuntu /var/www/html
-sudo chmod -R g+w /var/www/html
-# Create Files
+# sudo chmod -R 777 /var/www/html
 sudo echo "Hello World" | sudo tee /var/www/html/index.html
-#404 
+sudo /etc/init.d/nginx stop
+sudo sed -i '/server_name _;/a rewrite ^/redirect_me https://https://www.youtube.com/watch?v=QH2-TGUlwu4/$1 permanent;' /etc/nginx/sites-available/default
 sudo echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html
-# Edit configuration file? stop the service!
-sudo service nginx stop
-# Redirection
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n' /etc/nginx/sites-available/default
-#NGINX trial
-sudo sed -i "/http {/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/nginx.conf
 sudo sed -i '/server_name _;/a error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
-sudo service nginx start
+sudo sed -i "/http {/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/nginx.conf
+sudo /etc/init.d/nginx start
+
+
+# sudo ufw allow 'Nginx HTTP'
+
+# sudo service nginx stop
+
+# sudo sed -i "/http {/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/nginx.conf
+# sudo sed -i '/server_name _;/a error_page 404 /custom_404.html;' /etc/nginx/sites-available/default
+# sudo service nginx start
