@@ -29,7 +29,7 @@ file_line { 'header':
     ensure  => 'present',
     path    => '/etc/nginx/nginx.conf',
     after   => 'http {',
-    line    => "add_header X-Served-By '"$fqdn"';",
+    line    => "add_header X-Served-By '"hostname"';",
     require => Package['nginx'],
 }
 
