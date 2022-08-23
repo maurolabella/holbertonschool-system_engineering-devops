@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Display information about subdomains
+
+func()
+{
+  if [ -z "$2" ]
+  then
+    sub_domains=("www" "lb-01" "web-01" "web-02")
+  else
+    sub_domains=( "$2" )
+  fi 
+  for sub_domain in "${sub_domains[@]}"
+  do 
+    echo -n "The subdomain $sub_domain"
+    dig "$sub_domain.$1" | grep -A1 'ANSWER SECTION:' | tail -n -1\
+    |awk '{ print " is a " $4 " record and points to " $5}' 
+	done
+}
+func "$1" "$2"
+exit 0
