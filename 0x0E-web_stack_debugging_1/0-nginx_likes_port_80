@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#Debug configuration files Nginx
+
+sudo service nginx stop
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo sed -i 's/8080/80/g' /etc/nginx/sites-available/default
+sudo service nginx start
