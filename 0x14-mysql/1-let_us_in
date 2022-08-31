@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# creates user and password for both MySQL databases for the checker do 
+#its things
+
+sudo mysql -uroot -p "$1" -e "CREATE USER IF NOT EXISTS 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';"
+sudo mysql -uroot -p "$1" -e "GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';"
