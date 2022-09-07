@@ -28,8 +28,8 @@ def tr_usr_tojson(uid):
         o["completed"] = tsk.get("completed")
         o["username"] = data.get("employee").get("username")
         out.append(o)
-    with open('{}.json'.format(uid), 'w') as json_file:
-        json.dump({employee_id: out}, json_file)
+    with open('{}.json'.format(uid), 'w') as file:
+        json.dump({employee_id: out}, file)
 
 
 if __name__ == '__main__':
