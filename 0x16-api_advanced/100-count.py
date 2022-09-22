@@ -11,7 +11,7 @@ def count_words(subreddit, word_list, after="", counter={}, ini=0):
     """
     if ini == 0:
         for word in word_list:
-            counter[word.lower()] = 0
+            counter[word] = 0
 
     url = "https://api.reddit.com/r/{}/hot?after={}".format(subreddit, after)
     headers = {"User-Agent": "Python3"}
@@ -22,11 +22,17 @@ def count_words(subreddit, word_list, after="", counter={}, ini=0):
         for item in top:
             for word in counter:
                 counter[word] += item['data']['title'].lower(
-                ).split(' ').count(word)
+                ).split(' ').count(word.lower())
         if _after is not None:
             count_words(subreddit, word_list, _after, counter, 1)
         else:
-            str = sorted(counter.items(), key=lambda k: k[0])
+            str = {}
+            for x, y in counter.items():
+                try:
+                    str[x.lower()] += y
+                except Exception:
+                    str[x.lower()] = y
+            str = sorted(str.items(), key=lambda k: k[0])
             str = sorted(str, key=lambda k: k[1], reverse=True)
 
             # str = sorted(str.items(), key=lambda kv: kv[1], reverse=True)
