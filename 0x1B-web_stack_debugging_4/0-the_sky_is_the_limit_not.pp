@@ -1,0 +1,14 @@
+# 0. Sky is the limit, let's bring that limit higher
+
+service { 'nginx':
+  ensure => 'running',
+  enable => true,
+}
+
+file { '/etc/default/nginx':
+  ensure => present,
+} -> exec { 'ULIMIT':
+  notify  => Service['nginx'],
+  path    => '/bin/',
+  command => "sed -i 's/15/4096/g' /etc/default/nginx"
+}
